@@ -38,7 +38,7 @@ public class InventoryItem
         }
         else
         {
-            Console.WriteLine("Item not found!");
+            Console.WriteLine("\nError! Item not found!");
         }
     }
 
@@ -49,19 +49,19 @@ public class InventoryItem
         int restockItemId = int.Parse(Console.ReadLine());
         if (restockItemId == item1.ItemId)
         {
-            Console.Write("Enter additional quantity: ");
+            Console.Write("Enter quantity to be restocked: ");
             additionalQuantity = int.Parse(Console.ReadLine());
             item1.QuantityInStock += additionalQuantity;
         }
         else if (restockItemId == item2.ItemId)
         {
-            Console.Write("Enter additional quantity: ");
+            Console.Write("Enter quantity to be restocked: ");
             additionalQuantity = int.Parse(Console.ReadLine());
             item2.QuantityInStock += additionalQuantity;
         }
         else
         {
-            Console.WriteLine("Item not found!");
+            Console.WriteLine("\nError! Item not found!");
         }
     }
 
@@ -80,12 +80,12 @@ public class InventoryItem
             }
             else
             {
-                Console.WriteLine("Insufficient stock!");
+                Console.WriteLine("\nError! Insufficient stock!");
             }
         }
         else if (sellItemId == item2.ItemId)
         {
-            Console.Write("Enter quantity to sell: ");
+            Console.Write("\nEnter quantity to sell: ");
             quantitySold = int.Parse(Console.ReadLine());
             if (quantitySold <= item2.QuantityInStock)
             {
@@ -93,19 +93,19 @@ public class InventoryItem
             }
             else
             {
-                Console.WriteLine("Insufficient stock!");
+                Console.WriteLine("\nError! Insufficient stock!");
             }
         }
         else
         {
-            Console.WriteLine("Item not found!");
+            Console.WriteLine("\nError! Item not found!");
         }
     }
 
     // Check if an item is in stock
     public void IsInStock(InventoryItem item1, InventoryItem item2)
     {
-        Console.WriteLine("Check if an item is in stock:");
+        Console.WriteLine("\nCheck if an item is in stock:");
         Console.Write("Enter item ID: ");
         int id = int.Parse(Console.ReadLine());
 
@@ -133,13 +133,14 @@ public class InventoryItem
         }
         else
         {
-            Console.WriteLine("Item not found!");
+            Console.WriteLine("\nError! Item not found!");
         }
     }
 
     // Print item details
     public void PrintDetails()
     {
+        Console.WriteLine("\n");
         Console.WriteLine($"Item Name: {ItemName}");
         Console.WriteLine($"Item ID: {ItemId}");
         Console.WriteLine($"Price: {Price}");
@@ -191,15 +192,17 @@ class Program
 
         while (!exit)
         {
-            Console.WriteLine("\nMenu:");
+            Console.WriteLine("\n-----------------------------");
+            Console.WriteLine("Select Option from Menu:");
             Console.WriteLine("1. Update price of an item.");
             Console.WriteLine("2. Restock an item.");
             Console.WriteLine("3. Sell an item.");
             Console.WriteLine("4. Check if item is in-stock?");
             Console.WriteLine("5. Print details of all items.");
             Console.WriteLine("6. Exit.");
+            Console.WriteLine("______________________________");
 
-            Console.Write("Enter your choice: ");
+            Console.Write("\nEnter your choice: ");
             int choice;
             if (int.TryParse(Console.ReadLine(), out choice))
             {
@@ -224,7 +227,10 @@ class Program
                         exit = true;
                         break;
                     default:
-                        Console.WriteLine("Invalid choice!");
+                        Console.WriteLine("\n------------------------------");
+                        Console.WriteLine("Error! It's an Invalid choice.");
+                        Console.WriteLine("Choose from given options");
+                        Console.WriteLine("------------------------------");
                         break;
                 }
             }
